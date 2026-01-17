@@ -63,6 +63,61 @@ The dataset preserves translations across all quality levels, enabling controlle
   </em>
 </p>
 
+---
+
+## Teacher Models
+
+The following pretrained code-centric large language models were used to generate synthetic Java translations from multilingual source programs.
+
+| Model Name | Hugging Face Identifier |
+|-----------|-------------------------|
+| StarCoderBase | `bigcode/starcoderbase-1b` |
+| Qwen2.5-Coder | `Qwen/Qwen2.5-Coder-1.5B-Instruct` |
+| DeepSeek-Coder | `deepseek-ai/deepseek-coder-1.3b-instruct` |
+
+
+---
+
+### Teacher-wise Dataset Distribution
+
+The following table shows the distribution of synthetic translation pairs across training, validation, and test splits for each teacher model.
+
+| Teacher Model | Total | Train | Validation | Test |
+|--------------|-------|-------|------------|------|
+| StarCoder | 4,876 | 4,223 | 165 | 488 |
+| QwenCoder | 6,850 | 5,967 | 235 | 648 |
+| DeepSeek-Coder | 11,130 | 9,630 | 381 | 1,119 |
+| **Total** | **22,856** | **19,820** | **781** | **2,255** |
+
+
+### Training-Set Language Distribution
+
+Distribution of training-set translation pairs across source languages and teacher models, illustrating language diversity and relative teacher contributions.
+
+| Source Language | StarCoder | QwenCoder | DeepSeek-Coder |
+|----------------|-----------|-----------|----------------|
+| C | 582 | 1,076 | 1,745 |
+| C++ | 365 | 1,239 | 1,851 |
+| C# | 536 | 811 | 1,311 |
+| Python | 1,188 | 1,124 | 1,735 |
+| Ruby | 1,007 | 1,030 | 1,638 |
+| Kotlin | 328 | 492 | 904 |
+| Swift | 212 | 170 | 421 |
+| **Total** | **4,218** | **5,942** | **9,605** |
+
+### Quality Score Distribution Across Teachers
+
+Distribution of execution-grounded quality levels after AST-based filtering.
+
+| Teacher Model | Score 1 (AST-parsable) | Score 2 (Compilable) | Score 3 (Functionally Correct) |
+|--------------|------------------------|----------------------|--------------------------------|
+| StarCoder | 2,490 | 1,558 | 828 |
+| QwenCoder | 3,356 | 1,785 | 1,709 |
+| DeepSeek-Coder | 2,679 | 3,781 | 4,670 |
+| **Total** | **8,525** | **7,124** | **7,207** |
+
+
+
 
 ## Key Results (Summary)
 
@@ -104,7 +159,7 @@ This directory contains all dataset artifacts, including raw data, processed dat
   Main synthetic parallel dataset containing translations across all quality levels.
 
 - `codenet_combined_translator_dataset_astfixed.jsonl`  
-  AST-normalized version used to ensure stable parsing and evaluation.
+  CodeNetTrans-Qs Dataset - Final dataset containing 7 Source code to Java Translation with QualityStratification.
 
 - `codenet_single_solution.jsonl`  
   One accepted solution per problem per source language extracted from Project CodeNet.
@@ -218,13 +273,13 @@ This directory contains all Python scripts used for dataset construction, transl
 ### Teacher Query Scripts
 
 - `starcoderqs.py`  
-  StarCoder query interface.
+  Code to score StarCoder translations.
 
 - `qwencoderqs.py`  
-  QwenCoder query interface.
+  Code to score QwenCoder translations.
 
 - `deepseekcoderqs.py`  
-  DeepSeek-Coder query interface.
+  Code to score DeepseekCoder translations.
 
 ---
 
@@ -292,6 +347,39 @@ This script coordinates:
 - Fully automated pipeline from data generation to evaluation
 
 ---
+
+## Model Architecture, Training Setup, and Hardware Configuration
+
+The following table summarizes the model architecture, training configuration, and hardware setup used consistently across all experiments.
+
+| Setting | Value |
+|--------|-------|
+| Base model | CodeT5-base |
+| Model size | Approximately 220M parameters |
+| Training strategy | Full fine-tuning (FFT) |
+| Target language | Java |
+| Source languages | C, C++, C#, Python, Ruby, Kotlin, Swift |
+| Optimizer | AdamW |
+| Learning rate | 2 × 10⁻⁴ |
+| Learning rate schedule | Linear warmup followed by linear decay |
+| Warmup steps | 100 |
+| Gradient clipping | 1.0 |
+| Batch size | 8 |
+| Gradient accumulation steps | 1 |
+| Maximum training epochs | 30 |
+| Early stopping | Patience of 3 epochs based on validation CodeBLEU |
+| Prompt maximum length | 512 tokens |
+| Target maximum length | 512 tokens |
+| Maximum generation length | 128 tokens |
+| Precision | FP16 (mixed precision) |
+| Gradient checkpointing | Enabled |
+| Random seed | 42 |
+| Hardware | NVIDIA A100 GPU (40 GB memory) |
+| Evaluation criteria | AST parsability, compilability, functional correctness |
+
+---
+
+
 
 
 ---
