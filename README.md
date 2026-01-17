@@ -391,7 +391,7 @@ PhD Scholar, Program Analysis and AI
 Email: deepaknaikmv01@gmail.com
 
 Swaminathan J  
-Senior Member, IEEE  
+Chairperson, Department of Computer Science
 
 Department of Computer Science and Engineering  
 Amrita Vishwa Vidyapeetham, India
