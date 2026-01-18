@@ -154,22 +154,22 @@ This directory contains all dataset artifacts, including raw data, processed dat
 
 ### Core Dataset Files
 
-- `codenet_combined_translator_dataset.jsonl`  
+- `codenet_combined_translator_dataset.jsonl.gz`  
   Main synthetic parallel dataset containing translations across all quality levels.
 
-- `codenet_combined_translator_dataset_astfixed.jsonl`  
+- `codenet_combined_translator_dataset_astfixed.jsonl.gz`  
   CodeNetTrans-Qs Dataset - Final dataset containing 7 Source code to Java Translation with QualityStratification.
 
-- `codenet_single_solution.jsonl`  
+- `codenet_single_solution.jsonl.gz`  
   One accepted solution per problem per source language extracted from Project CodeNet.
 
-- `codenet_single_solution_starcoder.jsonl`  
+- `codenet_single_solution_starcoder.jsonl.gz`  
   Java translations generated using StarCoder.
 
-- `codenet_single_solution_qwencoder.jsonl`  
+- `codenet_single_solution_qwencoder.jsonl.gz`  
   Java translations generated using QwenCoder.
 
-- `codenet_single_solution_deepseekcoder.jsonl`  
+- `codenet_single_solution_deepseekcoder.jsonl.gz`  
   Java translations generated using DeepSeek-Coder.
 
 Each JSONL entry includes:
