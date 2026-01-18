@@ -140,8 +140,7 @@ Github_CodeNetTrans-QS/
 └── content/
 ├── datasets/
 ├── files/
-├── models/
-├── env/
+├── requirements.txt
 └── run_on_hpc.py
 
 
@@ -196,13 +195,6 @@ Each JSONL entry includes:
 
 - `complete_test_set_predictions_progressive_learning_reverse/`  
   Predictions from reverse curriculum ablation experiments.
-
----
-
-### Raw Source Archive
-
-- `Project_CodeNet.tar.gz`  
-  Snapshot of Project CodeNet used for dataset construction.
 
 ---
 
@@ -283,35 +275,6 @@ This directory contains all Python scripts used for dataset construction, transl
 
 ---
 
-## content/models/
-
-This directory contains pretrained and fine-tuned CodeT5 models used in the experiments.
-
-models/
-├── CodeT5_Translation_full_finetune/
-├── CodeT5_Translation_Progressive_Learning/
-├── CodeT5_Translation_Progressive_Learning_Reverse/
-├── CodeT5_Translation_Deepseek/
-└── CodeT5.zip
-
-
-- `CodeT5_Translation_full_finetune`  
-  Model trained on a single quality level.
-
-- `CodeT5_Translation_Progressive_Learning`  
-  Model trained using curriculum learning from low to high quality.
-
-- `CodeT5_Translation_Progressive_Learning_Reverse`  
-  Reverse curriculum ablation model.
-
-- `CodeT5_Translation_Deepseek`  
-  Teacher-specific comparison model.
-
-- `CodeT5.zip`  
-  Base pretrained CodeT5 model.
-
----
-
 ## Execution-Grounded Quality Levels
 
 Each translation is assigned a quality score based on execution-level correctness:
@@ -321,6 +284,13 @@ Each translation is assigned a quality score based on execution-level correctnes
 - Score 3: Functionally correct Java code that passes all test cases
 
 This stratification is central to the experimental design and analysis.
+
+---
+
+## Libraries to Install
+
+- `requirements.txt`
+  All the libraries to be installed for execution. 
 
 ---
 
@@ -376,11 +346,6 @@ The following table summarizes the model architecture, training configuration, a
 | Random seed | 42 |
 | Hardware | NVIDIA A100 GPU (40 GB memory) |
 | Evaluation criteria | AST parsability, compilability, functional correctness |
-
----
-
-
-
 
 ---
 
