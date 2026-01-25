@@ -140,16 +140,20 @@ Distribution of execution-grounded quality levels after AST-based filtering.
 
 ## Key Results (Summary)
 
-Using the proposed quality-stratified dataset, a CodeT5-base model trained with curriculum learning achieves strong execution-level performance.
+Using the proposed quality-stratified dataset, a **CodeT5-base model trained with curriculum learning**
+achieves strong execution-level performance.
 
 | Model | Functional Correctness (%) [Pass@1] |
-|------|----------------------------|
-| StarCoder (Teacher) | 19.88 |
-| QwenCoder (Teacher) | 24.54 |
-| CodeT5 (trained on Score-3 only) | 20.41 |
-| CodeT5 (Curriculum: Score 1 → Score 2 → Score 3) | 24.62 (+20.6%) |
+|------|-------------------------------------|
+| StarCoder (Teacher) | 9.29 |
+| QwenCoder (Teacher) | 26.10 |
+| DeepSeek-Coder (Teacher) | 30.30 |
+| CodeT5 (trained on Score-3 only) | 20.95 |
+| CodeT5 (Curriculum: Score 1 → Score 2 → Score 3) | 25.17 (+20.1%) |
 
-Curriculum learning over quality levels yields a **20.6% relative improvement in functional correctness** compared to training exclusively on functionally correct translations. Detailed language-wise and ablation results are provided in the accompanying paper.
+Curriculum learning over quality levels yields a **20.1% relative improvement in functional correctness**
+compared to training exclusively on functionally correct translations.
+
 
 ---
 
