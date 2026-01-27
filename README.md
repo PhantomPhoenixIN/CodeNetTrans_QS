@@ -427,7 +427,7 @@ The following table summarizes the model architecture, training configuration, a
 | Batch size | 8 |
 | Gradient accumulation steps | 1 |
 | Maximum training epochs | 30 |
-| Early stopping | Patience of 3 epochs based on validation CodeBLEU |
+| Early stopping | Patience of 3 epochs |
 | Prompt maximum length | 512 tokens |
 | Target maximum length | 512 tokens |
 | Maximum generation length | 128 tokens |
