@@ -434,7 +434,7 @@ The following table summarizes the model architecture, training configuration, a
 | Precision | FP16 (mixed precision) |
 | Gradient checkpointing | Enabled |
 | Random seed | 42 |
-| Hardware | 2 NVIDIA A100 GPU (40 GB memory) |
+| Hardware | 2 NVIDIA A100 GPU (40 GB memory each) |
 | Evaluation criteria | AST parsability, compilability, functional correctness |
 
 ---
