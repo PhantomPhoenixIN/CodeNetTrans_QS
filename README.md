@@ -268,6 +268,7 @@ Each JSONL entry includes:
 
 - `complete_test_set_predictions_progressive_learning_reverse/`  
   Predictions from reverse curriculum ablation experiments.
+
 ```
 
 ---
@@ -338,6 +339,12 @@ This directory contains all Python scripts used for dataset construction, transl
 
 - `evaluating_translator_module_progressive_learning.py`  
   Evaluation of curriculum learning effectiveness.
+
+- `pass_at_k_predictions.py`
+  Greedy and stochastic solutions from models. Atmost 5 candidates (translations) for one input code.
+
+- `pass_At_k_evaluation.py`
+   Evaluation of the k candidates generated for the entire test set. 
 ```
 
 ---
