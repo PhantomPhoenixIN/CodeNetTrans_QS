@@ -51,7 +51,7 @@ The dataset preserves translations across all quality levels, enabling controlle
 ## Execution-Grounded Quality-Stratified Framework
 
 <p align="center">
-  <img src="execution_grounded_quality_stratified_pipeline.png" width="900">
+  <img src="CodeNetTrans-QS (6).png" width="900">
 </p>
 
 <p align="center">
